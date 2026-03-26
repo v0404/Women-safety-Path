@@ -1,70 +1,77 @@
-# AI-Based Women Safety Prediction System
+# Women Safety Prediction System
 
-This project aims to enhance women's safety by predicting the safety level of travel routes using machine learning techniques.
+An AI-based system that predicts the safety score between two locations in Vijayawada using a trained RandomForest model. The system provides safety scores, alternate route suggestions, and visualizes routes on a map.
 
 ## Features
 
-- Predicts route safety (Safe / Moderate / Unsafe)
-- Generates safety score (0–100%)
-- Machine Learning model (Random Forest)
-- Interactive map visualization using Streamlit and Folium
-- Suggests alternate safer routes dynamically
-- Displays nearby police stations on map
-- Considers time of day (Morning, Afternoon, Evening, Night)
-
-## How It Works
-
-The system takes:
-- Source location
-- Destination
-- Time of travel
-
-It then evaluates multiple features:
-- Distance between locations
-- Population density
-- Streetlight density
-- Number of nearby police stations
-
-Using a trained ML model, it predicts:
-- Safety label (Safe / Moderate / Unsafe)
-- Safety score (%)
-
-It also generates an alternate route passing through safer landmarks.
-
-## Model Details
-
-- Algorithm: Random Forest Classifier
-- Features Used:
-  - Source index
-  - Destination index
-  - Time of day
-  - Distance
-  - Population density
-  - Streetlight density
-  - Police stations nearby
+- Predict safety scores for routes in Vijayawada (0-100%)
+- Categorize routes as Safe, Moderate, or Unsafe
+- Suggest alternate safe routes when the direct route is unsafe
+- Visualize routes on an interactive map
+- Display nearby police stations
+- Provide safety tips based on time of day
 
 ## Technologies Used
 
-- Python
-- Streamlit (Frontend UI)
-- Folium (Map visualization)
-- Scikit-learn (Machine Learning)
-- Pandas, NumPy
+- **Streamlit**: Web application framework
+- **Folium**: Interactive map visualization
+- **Scikit-learn**: Machine learning model (RandomForest)
+- **Geopy**: Geocoding services
+- **Joblib**: Model serialization
 
-## Output
+## Installation
 
-- Safety score (e.g., 72% Safe)
-- Safety suggestions
-- Route visualization (direct vs alternate)
-- Police station markers
+1. Clone or download this repository
+2. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## Future Improvements
+## Usage
 
-- Real-time crime data integration
-- Live GPS tracking
-- Traffic-aware route optimization
-- Emergency alert system
+1. Run the Streamlit application:
+   ```bash
+   streamlit run app.py
+   ```
 
----
+2. The application will open in your default web browser
 
-Developed as a Machine Learning Project for academic purposes.
+3. Select:
+   - Source location
+   - Destination location
+   - Time of day (Morning/Afternoon/Evening/Night)
+
+4. Click "Predict Safety" to get the results
+
+## How It Works
+
+1. The user selects source, destination, and time of day
+2. The system uses a trained RandomForest model to predict the safety score
+3. If the direct route is unsafe, an alternate safe route is suggested
+4. Both routes are visualized on an interactive map
+5. Safety tips are provided based on the time of day
+
+## Model Information
+
+The system uses a RandomForest classifier trained on features such as:
+- Source and destination locations
+- Time of day
+- Distance between locations
+- Population density
+- Streetlight density
+- Nearby police stations
+
+## Map Features
+
+- Red route: Direct route (color indicates safety level)
+- Green route: Alternate safe route
+- Blue markers: Police stations
+- Green marker: Starting point
+- Red marker: Destination
+
+## Safety Tips
+
+The system provides context-aware safety tips based on the time of day:
+- Morning/Afternoon: General safety precautions
+- Evening: Route safety recommendations
+- Night: Enhanced safety measures
